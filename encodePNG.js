@@ -1996,6 +1996,11 @@ function utf8_(str) {
 }
 
 const encodePNG = (imgd, width, height) => {
+  if (imgd.data) {
+    width = imgd.width;
+    height = imgd.height;
+    imgd = imgd.data;
+  }
   const opt_params = {};
   const pngEncoder = new CanvasTool.PngEncoder(imgd, width, height, opt_params);
   const bin = Uint8Array.from(pngEncoder.convertToArray()); //pngEncoder.convert();
